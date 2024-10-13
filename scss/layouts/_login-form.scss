@@ -1,4 +1,5 @@
- 
+
+
 #login-form{
     /* display: grid;
     grid-template-columns: 50% 50%;
@@ -40,10 +41,13 @@
     }
 
     .button-sub{
-       width: 8vh;
+       width: 10vh;
        height: 3vh;
        background-color: $verde-claro;
-       border: none;
+       border: outset 0.5vh $verde-intermedio;
+       animation-name: parpadeo;
+       animation-duration: 10s;
+       animation-iteration-count: infinite;
        opacity: 50%;
        font-family: $fuente-ppal;
        font-weight: 400;
@@ -51,6 +55,29 @@
        align-self: center;
        margin-top: 2vh;
 
+       &:hover{
+        border: inset 0.5vh $verde-intermedio;
+       }
+
+
+
+    }
+
+    @keyframes parpadeo{
+
+        0%{
+            background-color: $verde-matrix;
+            
+        }
+        50%{
+            background-color: $verde-claro;
+        }
+        75%{
+            background-color: $verde-matrix;            
+        }
+        100%{
+            background-color: $verde-claro;
+        }
     }
 
     .input-box{

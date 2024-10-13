@@ -51,16 +51,36 @@
   grid-column-start: span 2;
 }
 #login-form .button-sub {
-  width: 8vh;
+  width: 10vh;
   height: 3vh;
   background-color: #92e5a1;
-  border: none;
+  border: outset 0.5vh #80ce87;
+  animation-name: parpadeo;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
   opacity: 50%;
   font-family: "IBM Plex Mono", monospace;
   font-weight: 400;
   color: #204829;
   align-self: center;
   margin-top: 2vh;
+}
+#login-form .button-sub:hover {
+  border: inset 0.5vh #80ce87;
+}
+@keyframes parpadeo {
+  0% {
+    background-color: #22b455;
+  }
+  50% {
+    background-color: #92e5a1;
+  }
+  75% {
+    background-color: #22b455;
+  }
+  100% {
+    background-color: #92e5a1;
+  }
 }
 #login-form .input-box {
   border: none;

@@ -1,25 +1,51 @@
+let usuario = "admin",
+  contraseña = "initpass";
+let fun_user = "",
+  fun_pass = "";
 
-var usuario="admin", contraseña="initpass", resultado=false; 
+const formulario = document.querySelector("#login-form");
 
-function validar()
-{
-    var fun_user= document.getElementById("user-input");
-    var fun_pass= document.getElementById("pass-input");
+deshabilitar_foward();
 
-    while(resultado==false)
-    {
-        if(fun_user!= usuario || fun_pass!=contraseña)
-        {
-            alert("Ah ah ah , you din´t say the magic word");
-        }else
-        {
-            resultado=true;
-        }    
-    }
+formulario.addEventListener("submit", function (event) {
+  event.preventDefault();
+  fun_user = document.getElementById("user-input").value;
+  fun_pass = document.getElementById("pass-input").value;
 
-    window.location.href ="pages/main_page.html"; 
+  if (validar_vacio() === true) {
+    alert("El/Los campos estan vacios");
+  } else {
+    validar(fun_user, fun_pass);
+  }
 
+  deshabilitar_foward();
+});
+
+function limpiar_inputs() {
+  document.getElementById("user-input").value = "";
+  document.getElementById("pass-input").value = "";
 }
 
+function validar(user1, pass1) {
+  if (user1 != usuario || pass1 != contraseña) {
+    limpiar_inputs();
+    alert("Ah ah ah , you din´t say the magic word");
+  } else {
+    window.location.href = "pages/main_page.html";
+  }
+}
 
+function validar_vacio() {
+  if (fun_user == "" || fun_pass == "") {
+    return true;
+  } else {
+    return false;
+  }
+}
 
+function deshabilitar_foward() {
+    history.pushState(null, null, window.location.href);
+    window.addEventListener('popstate', function(event){
+        this.history.pushState(null, null, this.window.location.href);
+    });
+}

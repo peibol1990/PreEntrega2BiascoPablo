@@ -1,11 +1,45 @@
-
-.principal{
-    background-color: $verde-relleno;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: $fuente-ppal;
+.principal {
+  background-color: $verde-relleno;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $fuente-ppal;
 }
 
+.inv_principal {
+  background-color: $verde-relleno;
+  width: 100%;
+  height: 100vh;
+  font-family: $fuente-ppal;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+
+  .mitad {
+    width: 50%;
+    height: 100vh;
+  }
+
+  .carga {
+    #carga-form {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  .c_inputs{
+    text-emphasis-color: $verde-matrix;
+     width: 80%;
+    height: 5vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;    
+    border: solid 1vh ;
+    border-image: url(../../multimedia/bordes/obsidian.png) 30 round;
+
+  }
+}

@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/styles.css">
-        <title>Matrix</title>
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Inventario - Matrix</title>
+</head>
+
 <body>
 
     <h1 class="tt_ppal">Inventario de Personaje</h1>
 
-    <section class="principal">
-    <section class="carga mitad">
+    <section class="inv_principal">
 
-        <form id="carga-form">
-            <input class="c_inputs" type="number" placeholder="ID Artículo">
-            <input class="c_inputs" type="text" placeholder="Nombre Artículo">
-            <input class="c_inputs" type="number" placeholder="Precio">
-            <select name="lista_tamaño" id="lista_tamaño">
-                <option value="">Seleccione un tamaño</option>
-                <option value="g">Grande</option>
-                <option value="m">Mediano</option>
-                <option value="s">Pequeño</option>
-            </select>
-            <input type="file" id="item_img" name="item_img" accept="image/*" required placeholder="Imagen Artículo">
-            <button type="submit">Guardar</button>
-        </form>
+        <section class="carga mitad">
 
+            <form id="carga-form">
+                <input class="c_inputs" type="text" placeholder="ID Artículo">
+                <input class="c_inputs" type="text" placeholder="Nombre Artículo">
+                <input class="c_inputs" type="text" placeholder="Precio">
+                <select class="c_inputs" name="lista_tamaño" id="lista_tamaño">
+                    <option value="">Seleccione un tamaño</option>
+                    <option value="g">Grande</option>
+                    <option value="m">Mediano</option>
+                    <option value="s">Pequeño</option>
+                </select>
+                <input class="c_inputs" type="file" id="item_img" name="item_img" accept="image/*" required>
+                <button class="c_inputs" type="submit">Guardar</button>
+            </form>
+
+        </section>
+
+        <section class="inventario mitad">
+
+
+
+        </section>
     </section>
-    
-    <section class="inventario mitad"> 
 
-        
-
-    </section>
-</section>
-    
 
 
 
     <script src="../js/main.js"></script>
 </body>
+
 </html>

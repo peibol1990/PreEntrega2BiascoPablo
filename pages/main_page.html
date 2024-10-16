@@ -16,32 +16,61 @@
 
         <section class="carga mitad">
 
+            <h2 class="sub_tt">Carga Artículo</h2>
+
             <form id="carga-form">
-                <input class="c_inputs" type="text" placeholder="ID Artículo">
-                <input class="c_inputs" type="text" placeholder="Nombre Artículo">
-                <input class="c_inputs" type="text" placeholder="Precio">
+                <input id="id_art" class="c_inputs" type="text" placeholder="ID Artículo">
+                <input id="nombre_art" class="c_inputs" type="text" placeholder="Nombre Artículo">
+                <input id="precio_art" class="c_inputs" type="text" placeholder="Precio">
                 <select class="c_inputs" name="lista_tamaño" id="lista_tamaño">
                     <option value="">Seleccione un tamaño</option>
                     <option value="g">Grande</option>
                     <option value="m">Mediano</option>
                     <option value="s">Pequeño</option>
                 </select>
-                <input class="descripcion" type="text" placeholder="Descripción">
-                <input class="c_inputs" type="file" id="item_img" name="item_img" accept="image/*" required>
-                <button class="c_inputs" type="submit">Guardar</button>
+                <input id="descripcion" class="descripcion" type="text" placeholder="Descripción">
+                <!-- <input class="c_inputs" type="file" id="item_img" name="item_img" accept="image/*" required> -->
+                <button onclick="daleGas" class="c_inputs" type="submit">Guardar</button>
             </form>
 
             <div class="advertencias">
-                <p class="advt">Recuerde que el inventario tiene capacidad solo hasta 60 espacios.Pequeño: 1 espacio; Mediano: 2 espacios; Grande: 3 espacios. </p>
+                <p class="advt">Recuerde que el inventario tiene capacidad solo hasta 60 espacios.Pequeño: 1 espacio; Mediano: 2 espacios; Grande: 3 espacios.  </p>
             </div>
 
         </section>
 
         <section class="inventario mitad">
             
+            <h2 class="sub_tt_ver">Vista Previa</h2>
+            
             <div class="mostrar_datos">
-                
-                
+              
+                <div class="format_ver">
+                    <label for="ver_i">ID: </label>
+                    <p class="xOx" id="p_ver_id"></p>
+                </div>
+                <div class="format_ver">
+                    <label for="ver_nom">Nombre: </label>
+                    <p class="xOx" id="p_ver_nombre"></p>
+                </div>
+                <div class="format_ver">
+                    <label for="ver_des">Descripción: </label>
+                    <p class="xOx_d" id="p_ver_des"></p>
+                </div>
+                <div class="format_ver">
+                    <label for="cant_it">Cantidad Items: </label>
+                    <p class="xOx" id="p_cant_items"></p>
+                </div>
+                <div class="format_ver">
+                    <label for="val_it">Valor Total: </label>
+                    <p class="xOx" id="p_valor_items"></p>
+                </div>
+                <div class="format_ver">
+                    <label for="lug_rest">Lugares Restantes</label>
+                    <p class="xOx" id="p_lugares_rest"></p>
+                </div>              
+
+
 
             </div>
             

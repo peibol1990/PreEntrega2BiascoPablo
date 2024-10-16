@@ -1,10 +1,10 @@
-.tt_ppal{
+.tt_ppal {
   text-align: center;
   font-family: $fuente-ppal;
   background-color: transparent;
-  color:$verde-matrix;
+  color: $verde-matrix;
   padding: 0.5em;
-  border: solid 0.2em $verde-claro; 
+  border: solid 0.2em $verde-claro;
   border-radius: 1em;
   margin-left: 2em;
   margin-right: 2em;
@@ -41,6 +41,13 @@
     justify-content: space-evenly;
     align-items: center;
 
+    .sub_tt {
+      color: $verde-matrix;
+      padding: 0.3em;
+      border: solid 0.2em $verde-claro;
+      border-radius: 0.5em;
+    }
+
     #carga-form {
       display: flex;
       flex-direction: column;
@@ -48,8 +55,9 @@
       flex-wrap: wrap;
 
       .descripcion {
+        text-wrap: wrap;
         color: $verde-matrix;
-        height:8vh;
+        height: 8vh;
         margin-top: 1vh;
         margin-bottom: 1vh;
         border: solid 0.4em $verde-intermedio;
@@ -69,23 +77,66 @@
       border-radius: 0.8em;
       padding: 0.3em;
 
-      .advt {        
+      .advt {
         color: $verde-matrix;
         text-wrap: wrap;
         text-align: center;
       }
     }
 
-    .c_inputs {   
+    .c_inputs {
       font-family: $fuente-ppal;
-      text-align: center; 
+      text-align: center;
       background-color: $negro-puro;
-      color: $verde-matrix;  
-      height: 5vh;
-      margin-top: 1vh;
-      margin-bottom: 1vh;
+      color: $verde-matrix;
+      height: 4vh;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
       border: solid 0.4em $verde-intermedio;
       border-radius: 1.5em;
+      align-content: center;
+      padding: 0.2em;
+    }
+  }
+}
+
+.inventario {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  .sub_tt_ver {
+    text-align: center;
+    font-family: $fuente-ppal;
+    background-color: transparent;
+    color: $verde-matrix;
+    padding: 0.5em;
+    border: solid 0.2em $verde-claro;
+    border-radius: 1em;
+    margin-top: 3em;
+    margin-bottom: 4em;
+  }
+
+  .format_ver {
+    width: 150%;
+    border:solid 0.3em $verde-claro;
+    margin-top: 0.5em;
+    padding: 0.2em;
+    color: $verde-matrix;
+    background-color: $negro-puro;
+
+    .xOx{      
+    border: solid 0.2em white;
+    width: 5em;
+    height: 2em;
+    }
+
+    .xOx_d{
+      border: solid 0.2em white;
+      width: 20em;
+      height: 4em;
     }
   }
 }

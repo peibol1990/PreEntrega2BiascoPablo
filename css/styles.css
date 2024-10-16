@@ -53,6 +53,12 @@
   justify-content: space-evenly;
   align-items: center;
 }
+.inv_principal .carga .sub_tt {
+  color: #22b455;
+  padding: 0.3em;
+  border: solid 0.2em #92e5a1;
+  border-radius: 0.5em;
+}
 .inv_principal .carga #carga-form {
   display: flex;
   flex-direction: column;
@@ -60,6 +66,7 @@
   flex-wrap: wrap;
 }
 .inv_principal .carga #carga-form .descripcion {
+  text-wrap: wrap;
   color: #22b455;
   height: 8vh;
   margin-top: 1vh;
@@ -89,11 +96,50 @@
   text-align: center;
   background-color: #000000;
   color: #22b455;
-  height: 5vh;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
+  height: 4vh;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
   border: solid 0.4em #80ce87;
   border-radius: 1.5em;
+  align-content: center;
+  padding: 0.2em;
+}
+
+.inventario {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+.inventario .sub_tt_ver {
+  text-align: center;
+  font-family: "IBM Plex Mono", monospace;
+  background-color: transparent;
+  color: #22b455;
+  padding: 0.5em;
+  border: solid 0.2em #92e5a1;
+  border-radius: 1em;
+  margin-top: 3em;
+  margin-bottom: 4em;
+}
+.inventario .format_ver {
+  width: 150%;
+  border: solid 0.3em #92e5a1;
+  margin-top: 0.5em;
+  padding: 0.2em;
+  color: #22b455;
+  background-color: #000000;
+}
+.inventario .format_ver .xOx {
+  border: solid 0.2em white;
+  width: 5em;
+  height: 2em;
+}
+.inventario .format_ver .xOx_d {
+  border: solid 0.2em white;
+  width: 20em;
+  height: 4em;
 }
 
 #login-form {

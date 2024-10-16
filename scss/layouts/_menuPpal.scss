@@ -1,3 +1,15 @@
+.tt_ppal{
+  text-align: center;
+  font-family: $fuente-ppal;
+  background-color: transparent;
+  color:$verde-matrix;
+  padding: 0.5em;
+  border: solid 0.2em $verde-claro; 
+  border-radius: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
 .principal {
   background-color: $verde-relleno;
   width: 100%;
@@ -24,22 +36,56 @@
   }
 
   .carga {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
     #carga-form {
       display: flex;
       flex-direction: column;
       align-content: center;
       flex-wrap: wrap;
+
+      .descripcion {
+        color: $verde-matrix;
+        height:8vh;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        border: solid 0.4em $verde-intermedio;
+        border-radius: 1.5em;
+        text-align: center;
+        background-color: $negro-puro;
+        font-family: $fuente-ppal;
+      }
     }
-  }
 
-  .c_inputs{
-    text-emphasis-color: $verde-matrix;
-     width: 80%;
-    height: 5vh;
-    margin-top: 2vh;
-    margin-bottom: 2vh;    
-    border: solid 1vh ;
-    border-image: url(../../multimedia/bordes/obsidian.png) 30 round;
+    .advertencias {
+      background-color: $negro-puro;
+      font-family: $fuente-ppal;
+      width: 70%;
+      align-self: center;
+      border: solid 0.5em $verde-claro;
+      border-radius: 0.8em;
+      padding: 0.3em;
 
+      .advt {        
+        color: $verde-matrix;
+        text-wrap: wrap;
+        text-align: center;
+      }
+    }
+
+    .c_inputs {   
+      font-family: $fuente-ppal;
+      text-align: center; 
+      background-color: $negro-puro;
+      color: $verde-matrix;  
+      height: 5vh;
+      margin-top: 1vh;
+      margin-bottom: 1vh;
+      border: solid 0.4em $verde-intermedio;
+      border-radius: 1.5em;
+    }
   }
 }

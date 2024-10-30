@@ -19,7 +19,7 @@
             <h2 class="sub_tt">Carga Artículo</h2>
 
             <form id="carga-form">
-                <input id="id_art" class="c_inputs" type="text" placeholder="ID Artículo">
+                <input id="cod_art" class="c_inputs" type="text" placeholder="ID Artículo">
                 <input id="nombre_art" class="c_inputs" type="text" placeholder="Nombre Artículo">
                 <input id="precio_art" class="c_inputs" type="text" placeholder="Precio">
                 <select class="c_inputs" name="lista_tamaño" id="lista_tamaño">
@@ -29,7 +29,6 @@
                     <option value="s">Pequeño</option>
                 </select>
                 <input id="descripcion" class="descripcion" type="text" placeholder="Descripción">
-                <!-- <input class="c_inputs" type="file" id="item_img" name="item_img" accept="image/*" required> -->
                 <button class="c_inputs" type="submit">Guardar</button>
             </form>
 
@@ -46,7 +45,7 @@
             <div class="mostrar_datos">
               
                 <div class="format_ver">
-                    <label for="ver_i">ID: </label>
+                    <label for="ver_id">ID: </label>
                     <p class="xOx" id="p_ver_id"></p>
                 </div>
                 <div class="format_ver">
@@ -68,9 +67,7 @@
                 <div class="format_ver">
                     <label for="lug_rest">Lugares Restantes</label>
                     <p class="xOx" id="p_lugares_rest"></p>
-                </div>              
-
-
+                </div>           
 
             </div>
             
@@ -81,8 +78,8 @@
 
 
 
-
-    <script src="../js/main.js"></script>
+    <script src="../js/main_obj.js"></script>
+    <!-- <script src="../js/main.js"></script> -->
 </body>
 
 </html>

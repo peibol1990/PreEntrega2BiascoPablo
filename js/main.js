@@ -28,6 +28,7 @@ function get_tamanio() {
   return document.getElementById("lista_tamaño").value;
 }
 
+
 function calc_espacios(tamaño){
     if (tamaño === "s") {
         lugares_totales -= 1;

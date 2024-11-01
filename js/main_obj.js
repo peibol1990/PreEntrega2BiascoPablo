@@ -1,7 +1,7 @@
 let lugares_totales = 60;
 let tot_art = 0;
 let tot_precio = 0;
-const articulos_inventario = [];
+
 
 class ArticuloInv {
   constructor(codigo, nombre, precio, tamanio, descripcion) {
@@ -48,13 +48,13 @@ class ArticuloInv {
   }
 }
 
-document
-  .getElementById("carga-form")
-  .addEventListener("submit", function (event) {
+//los setters son para funciones a futuro que permitan modificar los objetos guardados. 
+
+document.getElementById("carga-form").addEventListener("submit", function (event) {
     event.preventDefault();
 
     let codigo = document.getElementById("cod_art").value;
-    let nombre = document.getElementById("nombre_art").value;
+    let nombre = document.getElementById("nombre_art").value.toUpperCase();
     let precio = parseInt(document.getElementById("precio_art").value);
     let tamanio = document.getElementById("lista_tamaño").value;
     let descripcion = document.getElementById("descripcion").value;
@@ -62,8 +62,6 @@ document
     const articulo = new ArticuloInv(codigo,nombre,precio,tamanio,descripcion);
 
     articulos_inventario.push(articulo);
-
-    alert(articulos_inventario[tot_art].precio);
 
     let tam = articulos_inventario[tot_art].tamanio; 
 
@@ -99,3 +97,12 @@ function mostrar_valores(cont) {
 function sumar_precios(precio) {
     return (tot_precio += precio);
   }
+
+  document.getElementById("buscador").addEventListener("click", function(event){
+
+    window.location.href = "buscador.html"; 
+
+  });
+
+
+  

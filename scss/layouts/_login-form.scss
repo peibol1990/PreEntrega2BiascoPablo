@@ -40,28 +40,7 @@
         grid-column-start: span 2;
     }
 
-    .button-sub{
-       width: 10vh;
-       height: 3vh;
-       background-color: $verde-claro;
-       border: outset 0.5vh $verde-intermedio;
-       animation-name: parpadeo;
-       animation-duration: 10s;
-       animation-iteration-count: infinite;
-       opacity: 50%;
-       font-family: $fuente-ppal;
-       font-weight: 400;
-       color: $verde-relleno;
-       align-self: center;
-       margin-top: 2vh;
-
-       &:hover{
-        border: inset 0.5vh $verde-intermedio;
-       }
-
-
-
-    }
+    
 
     @keyframes parpadeo{
 
@@ -86,6 +65,29 @@
     }
 
 }
+
+.button-sub{
+    width: 10vh;
+    height: 3vh;
+    background-color: $verde-claro;
+    border: outset 0.5vh $verde-intermedio;
+    animation-name: parpadeo;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    opacity: 50%;
+    font-family: $fuente-ppal;
+    font-weight: 400;
+    color: $verde-relleno;
+    align-self: center;
+    margin-top: 2vh;
+
+    &:hover{
+     border: inset 0.5vh $verde-intermedio;
+    }
+
+
+
+ }
 
     
     

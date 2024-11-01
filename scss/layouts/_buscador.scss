@@ -1,0 +1,47 @@
+.buscador_ppal {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+  .mitad_arriba {
+    background-color: $verde-relleno;
+    border: solid 3px $negro-puro;
+    border-radius: 2em;
+    width: 80%;
+    height: 20vh;
+    margin-top: 1vh;
+
+    .busc_filtros{
+    margin-top: 3vh;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: center;
+      align-items: center;
+
+      #clave_buscador{
+        text-align: center;
+        color: $verde-matrix;
+        width: 20%;
+        height: 3vh;
+      }
+    }
+
+    .checkboxes{
+        margin-top: 3vh;
+        color: $verde-matrix;
+        
+    }
+  }
+
+  .mitad_abajo {
+    background-color: $verde-relleno;
+    border: solid 3px $negro-puro;
+    width: 80%;
+    height: 70vh;
+    margin-top: 1vh;
+  }
+}

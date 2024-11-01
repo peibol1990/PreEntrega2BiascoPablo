@@ -1,0 +1,3 @@
+
+
+const articulos_inventario = [];

@@ -113,9 +113,6 @@ function sumar_precios(precio) {
 document
   .getElementById("btn_aceptar")
   .addEventListener("click", function (event) {
-    alert("Se presiono el boton aceptar");
-
-    console.log(articulos_inventario);
 
     const p_clave = document.getElementById("clave_buscador").value;
 
@@ -172,7 +169,7 @@ function mostrar_articulos() {
   const visor = document.getElementById("visor");
 
   articulos_inventario.forEach((articulo) => {
-    
+
     const espacio_p_mostrar = document.createElement("div");
 
     espacio_p_mostrar.classList.add("visor_individual");

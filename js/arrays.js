@@ -1,3 +1,3 @@
 
 
-const articulos_inventario = [];
+var articulos_inventario = [];

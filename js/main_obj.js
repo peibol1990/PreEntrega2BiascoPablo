@@ -2,7 +2,6 @@ let lugares_totales = 60;
 let tot_art = 0;
 let tot_precio = 0;
 
-
 class ArticuloInv {
   constructor(codigo, nombre, precio, tamanio, descripcion) {
     this._codigo = codigo;
@@ -48,9 +47,11 @@ class ArticuloInv {
   }
 }
 
-//los setters son para funciones a futuro que permitan modificar los objetos guardados. 
+//los setters son para funciones a futuro que permitan modificar los objetos guardados.
 
-document.getElementById("carga-form").addEventListener("submit", function (event) {
+document
+  .getElementById("carga-form")
+  .addEventListener("submit", function (event) {
     event.preventDefault();
 
     let codigo = document.getElementById("cod_art").value;
@@ -59,18 +60,24 @@ document.getElementById("carga-form").addEventListener("submit", function (event
     let tamanio = document.getElementById("lista_tamaño").value;
     let descripcion = document.getElementById("descripcion").value;
 
-    const articulo = new ArticuloInv(codigo,nombre,precio,tamanio,descripcion);
+    const articulo = new ArticuloInv(
+      codigo,
+      nombre,
+      precio,
+      tamanio,
+      descripcion
+    );
 
     articulos_inventario.push(articulo);
 
-    let tam = articulos_inventario[tot_art].tamanio; 
+    let tam = articulos_inventario[tot_art].tamanio;
 
     calc_espacios(tam);
-    mostrar_valores(tot_art);   
+    mostrar_valores(tot_art);
 
-    tot_art++;   
+    tot_art++;
 
-    
+    mostrar_articulos();
   });
 
 function calc_espacios(tamanio) {
@@ -83,103 +90,99 @@ function calc_espacios(tamanio) {
       lugares_totales -= 3;
     }
   }
-  
 }
 
 function mostrar_valores(cont) {
-  document.getElementById("p_ver_id").textContent = articulos_inventario[cont].codigo;
-  document.getElementById("p_ver_nombre").textContent = articulos_inventario[cont].nombre;
-  document.getElementById("p_ver_des").textContent = articulos_inventario[cont].descripcion;
-  document.getElementById("p_cant_items").textContent = tot_art +1;
-  document.getElementById("p_valor_items").textContent = sumar_precios(parseInt(articulos_inventario[cont].precio));
+  document.getElementById("p_ver_id").textContent =
+    articulos_inventario[cont].codigo;
+  document.getElementById("p_ver_nombre").textContent =
+    articulos_inventario[cont].nombre;
+  document.getElementById("p_ver_des").textContent =
+    articulos_inventario[cont].descripcion;
+  document.getElementById("p_cant_items").textContent = tot_art + 1;
+  document.getElementById("p_valor_items").textContent = sumar_precios(
+    parseInt(articulos_inventario[cont].precio)
+  );
   document.getElementById("p_lugares_rest").textContent = lugares_totales;
 }
 
 function sumar_precios(precio) {
-    return (tot_precio += precio);
-  }
+  return (tot_precio += precio);
+}
 
-  document.getElementById("buscador").addEventListener("click", function(event){
-
-    window.location.href = "buscador.html"; 
-
-  });
-
-  document.getElementById("btn_aceptar").addEventListener("click", function(event){
-
+document
+  .getElementById("btn_aceptar")
+  .addEventListener("click", function (event) {
     alert("Se presiono el boton aceptar");
 
     console.log(articulos_inventario);
 
-    const p_clave = document.getElementById("clave_buscador").value;  
+    const p_clave = document.getElementById("clave_buscador").value;
 
-    validar_buscador(); 
-  
-  });  
-  
+    validar_buscador();
+  });
 
-function validar_buscador(){     
-  
-    const ch_cod = document.getElementById("ch_codigo");
-    const ch_nom = document.getElementById("ch_nombre");
-    const palabra_clave =document.getElementById("clave_buscador").value;
+function validar_buscador() {
+  const ch_cod = document.getElementById("ch_codigo");
+  const ch_nom = document.getElementById("ch_nombre");
+  const palabra_clave = document.getElementById("clave_buscador").value;
 
-    console.log(palabra_clave);
+  console.log(palabra_clave);
 
-    if(palabra_clave === ""){
-        alert("Ingrese lo que desea buscar");
-    }if(!ch_cod.checked & !ch_nom.checked){
-        alert("Seleccione algún criterio de busqueda"); 
-    }if(ch_cod.checked & ch_nom.checked){
-        alert("Seleccione solo un criterio de busqueda"); 
-        ch_cod.checked = false;
-        ch_nom.checked = false;   
-    }if(ch_cod.checked){
-        buscador_por_codigo(palabra_clave);
-    }if(ch_nom.checked){
-        buscador_por_nombre(palabra_clave); 
-    }
-
+  if (palabra_clave === "") {
+    alert("Ingrese lo que desea buscar");
+  }
+  if (!ch_cod.checked & !ch_nom.checked) {
+    alert("Seleccione algún criterio de busqueda");
+  }
+  if (ch_cod.checked & ch_nom.checked) {
+    alert("Seleccione solo un criterio de busqueda");
+    ch_cod.checked = false;
+    ch_nom.checked = false;
+  }
+  if (ch_cod.checked) {
+    buscador_por_codigo(palabra_clave);
+  }
+  if (ch_nom.checked) {
+    buscador_por_nombre(palabra_clave);
+  }
 }
 
-function buscador_por_codigo(clave)
-{
-
+function buscador_por_codigo(clave) {
   console.log("esta es la palabra clave " + clave);
 
-  var res_busqueda = articulos_inventario.find(articulo => articulo.codigo == clave); 
+  var res_busqueda = articulos_inventario.find(
+    (articulo) => articulo.codigo == clave
+  );
 
   console.log(res_busqueda);
-
 }
 
-function buscador_por_nombre(clave)
-{
-
+function buscador_por_nombre(clave) {
   console.log("esta es la palabra clave " + clave);
 
-  var res_busqueda = articulos_inventario.find(articulo => articulo.nombre == clave); 
+  var res_busqueda = articulos_inventario.find(
+    (articulo) => articulo.nombre == clave
+  );
 
   console.log(res_busqueda);
-
 }
 
+function mostrar_articulos() {
+  const visor = document.getElementById("visor");
 
-
-/* function buscador_por_param(clave,propiedad){
+  articulos_inventario.forEach((articulo) => {
     
-    if(propiedad == "codigo"){
-       const res_busqueda1 = articulos_inventario.find(art=> art.codigo === clave);
-       console.log(res_busqueda1);
-    }else if(propiedad == "nombre"){
-      clave=clave.toUpperCase();
-       const res_busqueda2 = articulos_inventario.find(art =>art.nombre=== clave );
-       console.log(res_busqueda2);
-    }
+    const espacio_p_mostrar = document.createElement("div");
 
-         
-    
-} */
+    espacio_p_mostrar.classList.add("visor_individual");
 
+    espacio_p_mostrar.innerHTML = `
+      <p>Codigo: ${articulo.codigo}</p>
+      <p>Nombre: ${articulo.nombre}</p>
+      
+    `;
 
-  
+    espacio_p_mostrar.appendChild(espacio_p_mostrar);
+  });
+}

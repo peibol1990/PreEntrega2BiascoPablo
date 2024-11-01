@@ -25,13 +25,12 @@
   width: 100%;
   height: 100vh;
   font-family: $fuente-ppal;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
 
   .mitad {
-    width: 50%;
+    width: 85%;
     height: 100vh;
   }
 

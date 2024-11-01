@@ -113,7 +113,7 @@ function sumar_precios(precio) {
 
     const p_clave = document.getElementById("clave_buscador").value;  
 
-   buscador_por_param(p_clave,validar_buscador());
+    validar_buscador(); 
   
   });  
   
@@ -124,7 +124,7 @@ function validar_buscador(){
     const ch_nom = document.getElementById("ch_nombre");
     const palabra_clave =document.getElementById("clave_buscador").value;
 
-
+    console.log(palabra_clave);
 
     if(palabra_clave === ""){
         alert("Ingrese lo que desea buscar");
@@ -135,14 +135,38 @@ function validar_buscador(){
         ch_cod.checked = false;
         ch_nom.checked = false;   
     }if(ch_cod.checked){
-        return parseInt(ch_cod.value); 
+        buscador_por_codigo(palabra_clave);
     }if(ch_nom.checked){
-        return toString(ch_nom.value);
+        buscador_por_nombre(palabra_clave); 
     }
 
 }
 
-function buscador_por_param(clave,propiedad){
+function buscador_por_codigo(clave)
+{
+
+  console.log("esta es la palabra clave " + clave);
+
+  var res_busqueda = articulos_inventario.find(articulo => articulo.codigo == clave); 
+
+  console.log(res_busqueda);
+
+}
+
+function buscador_por_nombre(clave)
+{
+
+  console.log("esta es la palabra clave " + clave);
+
+  var res_busqueda = articulos_inventario.find(articulo => articulo.nombre == clave); 
+
+  console.log(res_busqueda);
+
+}
+
+
+
+/* function buscador_por_param(clave,propiedad){
     
     if(propiedad == "codigo"){
        const res_busqueda1 = articulos_inventario.find(art=> art.codigo === clave);
@@ -155,7 +179,7 @@ function buscador_por_param(clave,propiedad){
 
          
     
-}
+} */
 
 
   

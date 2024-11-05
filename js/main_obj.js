@@ -49,9 +49,9 @@ class ArticuloInv {
 
 //los setters son para funciones a futuro que permitan modificar los objetos guardados.
 
-document
-  .getElementById("carga-form")
-  .addEventListener("submit", function (event) {
+let visor = document.getElementById("visor");
+
+document.getElementById("carga-form").addEventListener("submit", function (event) {
     event.preventDefault();
 
     let codigo = document.getElementById("cod_art").value;
@@ -77,7 +77,6 @@ document
 
     tot_art++;
 
-    mostrar_articulos();
   });
 
 function calc_espacios(tamanio) {
@@ -111,18 +110,17 @@ function sumar_precios(precio) {
 }
 
 document
-  .getElementById("btn_aceptar")
-  .addEventListener("click", function (event) {
+  .getElementById("btn_aceptar").addEventListener("click", function () {
 
-    const p_clave = document.getElementById("clave_buscador").value;
-
+    limpiar_visor();
+    
     validar_buscador();
   });
 
 function validar_buscador() {
   const ch_cod = document.getElementById("ch_codigo");
   const ch_nom = document.getElementById("ch_nombre");
-  const palabra_clave = document.getElementById("clave_buscador").value;
+  const palabra_clave = document.getElementById("clave_buscador").value.toUpperCase();
 
   console.log(palabra_clave);
 
@@ -141,45 +139,63 @@ function validar_buscador() {
     buscador_por_codigo(palabra_clave);
   }
   if (ch_nom.checked) {
-    buscador_por_nombre(palabra_clave);
+    buscador_por_nombre(palabra_clave);  
   }
+
+  
 }
 
-function buscador_por_codigo(clave) {
-  console.log("esta es la palabra clave " + clave);
+function buscador_por_codigo(clave) { 
 
-  var res_busqueda = articulos_inventario.find(
+  var res_bus = articulos_inventario.find(
     (articulo) => articulo.codigo == clave
   );
 
-  console.log(res_busqueda);
+  document.getElementById
+  
+  cargar_datos(res_bus.codigo,res_bus.nombre,res_bus.precio,res_bus.tamanio,res_bus.descripcion);
 }
 
 function buscador_por_nombre(clave) {
-  console.log("esta es la palabra clave " + clave);
 
-  var res_busqueda = articulos_inventario.find(
+  var res_bus = articulos_inventario.find(
     (articulo) => articulo.nombre == clave
   );
 
-  console.log(res_busqueda);
+  cargar_datos(res_bus.codigo,res_bus.nombre,res_bus.precio,res_bus.tamanio,res_bus.descripcion);
 }
 
-function mostrar_articulos() {
-  const visor = document.getElementById("visor");
 
-  articulos_inventario.forEach((articulo) => {
+  function cargar_datos(codigo,nombre,precio,tamanio,descripcion) {                
 
-    const espacio_p_mostrar = document.createElement("div");
+    let contenedor = document.getElementById("visor");
 
-    espacio_p_mostrar.classList.add("visor_individual");
+    let d_cod = document.createElement("p");
+    let d_nom = document.createElement("p");
+    let d_pre = document.createElement("p");
+    let d_tam = document.createElement("p");
+    let d_des = document.createElement("p");
+    let sep = document.createElement("p");
+    d_cod.innerHTML =" ID: " + codigo;
+    d_nom.innerHTML =" Nombre: " + nombre;
+    d_pre.innerHTML = " Precio: " + precio;
+    d_tam.innerHTML = " Tamañio: " + tamanio;
+    d_des.innerHTML = " Descripcion: " + descripcion;
+    sep.innerText = "--------------------";
+    contenedor.appendChild(d_cod);
+    contenedor.appendChild(d_nom);
+    contenedor.appendChild(d_pre);
+    contenedor.appendChild(d_tam);
+    contenedor.appendChild(d_des);  
+    contenedor.appendChild(sep);
 
-    espacio_p_mostrar.innerHTML = `
-      <p>Codigo: ${articulo.codigo}</p>
-      <p>Nombre: ${articulo.nombre}</p>
-      
-    `;
+  }
 
-    espacio_p_mostrar.appendChild(espacio_p_mostrar);
-  });
-}
+  function limpiar_visor(){
+
+     document.getElementById("visor").innerHTML = "";
+
+  }
+
+
+

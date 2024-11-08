@@ -149,9 +149,7 @@ function buscador_por_codigo(clave) {
 
   var res_bus = articulos_inventario.find(
     (articulo) => articulo.codigo == clave
-  );
-
-  document.getElementById
+  ); 
   
   cargar_datos(res_bus.codigo,res_bus.nombre,res_bus.precio,res_bus.tamanio,res_bus.descripcion);
 }
@@ -168,26 +166,20 @@ function buscador_por_nombre(clave) {
 
   function cargar_datos(codigo,nombre,precio,tamanio,descripcion) {                
 
-    let contenedor = document.getElementById("visor");
+     let contenedor = document.getElementById("visor");
 
-    let d_cod = document.createElement("p");
-    let d_nom = document.createElement("p");
-    let d_pre = document.createElement("p");
-    let d_tam = document.createElement("p");
-    let d_des = document.createElement("p");
-    let sep = document.createElement("p");
-    d_cod.innerHTML =" ID: " + codigo;
-    d_nom.innerHTML =" Nombre: " + nombre;
-    d_pre.innerHTML = " Precio: " + precio;
-    d_tam.innerHTML = " Tamañio: " + tamanio;
-    d_des.innerHTML = " Descripcion: " + descripcion;
-    sep.innerText = "--------------------";
-    contenedor.appendChild(d_cod);
-    contenedor.appendChild(d_nom);
-    contenedor.appendChild(d_pre);
-    contenedor.appendChild(d_tam);
-    contenedor.appendChild(d_des);  
-    contenedor.appendChild(sep);
+     let art_mostrar = document.createElement("div");
+
+  art_mostrar.innerHTML =  `
+  <p>ID:${codigo}</p>
+  <p>Nombre: ${nombre}</p>
+  <p>Precio: ${precio}</p>
+  <p>Tamaño: ${tamanio}</p>
+  <p>Descripción: ${descripcion}</p>                                      
+  <hr>
+`;
+
+  contenedor.appendChild(art_mostrar);
 
   }
 

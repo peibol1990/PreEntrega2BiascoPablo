@@ -79,6 +79,10 @@ document.getElementById("carga-form").addEventListener("submit", function (event
 
   });
 
+  function guardar_en_mem(articulo){
+    localStorage.setItem(articulo.codigo,JSON.stringify(articulo));
+  }
+
 function calc_espacios(tamanio) {
   if (tamanio === "s") {
     lugares_totales -= 1;

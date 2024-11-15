@@ -1,6 +1,8 @@
 let lugares_totales = 60;
 let tot_art = 0;
 let tot_precio = 0;
+const clave_articulos = "listaArticulos";
+
 
 class ArticuloInv {
   constructor(codigo, nombre, precio, tamanio, descripcion) {
@@ -47,8 +49,6 @@ class ArticuloInv {
   }
 }
 
-//los setters son para funciones a futuro que permitan modificar los objetos guardados.
-
 let visor = document.getElementById("visor");
 
 document.getElementById("carga-form").addEventListener("submit", function (event) {
@@ -68,19 +68,32 @@ document.getElementById("carga-form").addEventListener("submit", function (event
       descripcion
     );
 
-    articulos_inventario.push(articulo);
+    articulos_inventario.push(articulo); 
 
-    let tam = articulos_inventario[tot_art].tamanio;
+    /* guardar_en_local_ind(articulo.codigo , articulo);    */ 
 
-    calc_espacios(tam);
+    guardar_array_local(clave_articulos, articulos_inventario);
+
+    calc_espacios(articulo.tamanio);
     mostrar_valores(tot_art);
 
     tot_art++;
 
   });
 
-  function guardar_en_mem(articulo){
+
+
+  function guardar_en_local_ind(clave, articulo){
+
+    /* const elemento= JSON.parse(localStorage.getItem(clave)); */ 
+    
     localStorage.setItem(articulo.codigo,JSON.stringify(articulo));
+  }
+  
+  function guardar_array_local(clave, articulos){
+
+    localStorage.setItem(clave,JSON.stringify(articulos));
+
   }
 
 function calc_espacios(tamanio) {
@@ -96,6 +109,7 @@ function calc_espacios(tamanio) {
 }
 
 function mostrar_valores(cont) {
+
   document.getElementById("p_ver_id").textContent =
     articulos_inventario[cont].codigo;
   document.getElementById("p_ver_nombre").textContent =
@@ -149,23 +163,42 @@ function validar_buscador() {
   
 }
 
-function buscador_por_codigo(clave) { 
 
-  var res_bus = articulos_inventario.find(
-    (articulo) => articulo.codigo == clave
-  ); 
+
+  function buscador_por_codigo(clave) { 
+
+    const art_mem_local = JSON.parse(localStorage.getItem(clave_articulos));
+    
+    const articulos_alm = art_mem_local.map(articulo => 
+      new ArticuloInv(articulo._codigo, articulo._nombre, articulo._precio, articulo._tamanio, articulo._descripcion)
+    );
   
-  cargar_datos(res_bus.codigo,res_bus.nombre,res_bus.precio,res_bus.tamanio,res_bus.descripcion);
-}
+    const res_bus = articulos_alm.find(articulo => articulo.codigo == clave); 
+    
+    if (res_bus) {
+      cargar_datos(res_bus.codigo, res_bus.nombre, res_bus.precio, res_bus.tamanio, res_bus.descripcion);
+    } else {
+      alert("Artículo no encontrado");
+    }
+  }
+  
 
-function buscador_por_nombre(clave) {
-
-  var res_bus = articulos_inventario.find(
-    (articulo) => articulo.nombre == clave
-  );
-
-  cargar_datos(res_bus.codigo,res_bus.nombre,res_bus.precio,res_bus.tamanio,res_bus.descripcion);
-}
+  function buscador_por_nombre(clave) { 
+    
+    const art_mem_local = JSON.parse(localStorage.getItem(clave_articulos));
+    
+    const articulos_alm = art_mem_local.map(articulo => 
+      new ArticuloInv(articulo._codigo, articulo._nombre, articulo._precio, articulo._tamanio, articulo._descripcion)
+    );
+  
+    const res_bus = articulos_alm.find(articulo => articulo.nombre == clave); 
+    
+    if (res_bus) {
+      cargar_datos(res_bus.codigo, res_bus.nombre, res_bus.precio, res_bus.tamanio, res_bus.descripcion);
+    } else {
+      alert("Artículo no encontrado");
+    }
+  }
 
 
   function cargar_datos(codigo,nombre,precio,tamanio,descripcion) {                

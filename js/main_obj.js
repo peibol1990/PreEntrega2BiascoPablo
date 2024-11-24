@@ -60,32 +60,22 @@ document.getElementById("carga-form").addEventListener("submit", function (event
     let tamanio = document.getElementById("lista_tamaño").value;
     let descripcion = document.getElementById("descripcion").value;
 
-    const articulo = new ArticuloInv(
-      codigo,
-      nombre,
-      precio,
-      tamanio,
-      descripcion
-    );
+    const articulo = new ArticuloInv(codigo,nombre,precio,tamanio,descripcion);
 
     articulos_inventario.push(articulo); 
-
-    /* guardar_en_local_ind(articulo.codigo , articulo);    */ 
 
     guardar_array_local(clave_articulos, articulos_inventario);
 
     calc_espacios(articulo.tamanio);
     mostrar_valores(tot_art);
 
-    tot_art++;
+    tot_art++;    
 
   });
 
 
-
+  
   function guardar_en_local_ind(clave, articulo){
-
-    /* const elemento= JSON.parse(localStorage.getItem(clave)); */ 
     
     localStorage.setItem(articulo.codigo,JSON.stringify(articulo));
   }
@@ -163,17 +153,9 @@ function validar_buscador() {
   
 }
 
-
-
   function buscador_por_codigo(clave) { 
-
-    const art_mem_local = JSON.parse(localStorage.getItem(clave_articulos));
-    
-    const articulos_alm = art_mem_local.map(articulo => 
-      new ArticuloInv(articulo._codigo, articulo._nombre, articulo._precio, articulo._tamanio, articulo._descripcion)
-    );
   
-    const res_bus = articulos_alm.find(articulo => articulo.codigo == clave); 
+    const res_bus = genArraydLocal().find(articulo => articulo.codigo == clave); 
     
     if (res_bus) {
       cargar_datos(res_bus.codigo, res_bus.nombre, res_bus.precio, res_bus.tamanio, res_bus.descripcion);
@@ -184,20 +166,28 @@ function validar_buscador() {
   
 
   function buscador_por_nombre(clave) { 
-    
-    const art_mem_local = JSON.parse(localStorage.getItem(clave_articulos));
-    
-    const articulos_alm = art_mem_local.map(articulo => 
-      new ArticuloInv(articulo._codigo, articulo._nombre, articulo._precio, articulo._tamanio, articulo._descripcion)
-    );
   
-    const res_bus = articulos_alm.find(articulo => articulo.nombre == clave); 
+    const res_bus = genArraydLocal().find(articulo => articulo.nombre == clave); 
     
     if (res_bus) {
       cargar_datos(res_bus.codigo, res_bus.nombre, res_bus.precio, res_bus.tamanio, res_bus.descripcion);
     } else {
       alert("Artículo no encontrado");
     }
+  }
+
+
+
+  function genArraydLocal(){
+
+    const art_mem_local = JSON.parse(localStorage.getItem(clave_articulos));
+    
+    const articulos_alm = art_mem_local.map(articulo => 
+      new ArticuloInv(articulo._codigo, articulo._nombre, articulo._precio, articulo._tamanio, articulo._descripcion)
+    );
+
+    return articulos_alm;
+
   }
 
 
@@ -225,6 +215,8 @@ function validar_buscador() {
      document.getElementById("visor").innerHTML = "";
 
   }
+
+  
 
 
 

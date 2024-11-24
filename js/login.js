@@ -1,3 +1,6 @@
+const popup = document.getElementById("popup");
+const overlay = document.getElementById("overlay");
+const video = document.getElementById("popupVideo");
 let usuario = "admin",
   contraseña = "initpass";
 let fun_user = "",
@@ -29,7 +32,25 @@ function limpiar_inputs() {
 function validar(user1, pass1) {
   if (user1 != usuario || pass1 != contraseña) {
     limpiar_inputs();
-    alert("Ah ah ah , you din´t say the magic word");
+    const condition = false;
+    if (!condition) {
+      popup.style.display = "block";
+      overlay.style.display = "block";
+
+      video.muted = false;
+      video.play();
+
+      setTimeout(() => {
+        popup.style.display = "none";
+        overlay.style.display = "none";
+        video.pause();
+        video.currentTime = 0;
+      }, 8000);
+    } else {
+      alert("La condición no se cumple.");
+    }
+    overlay.addEventListener('click', closePopup);
+    popup.addEventListener('click', closePopup);
   } else {
     window.location.href = "pages/main_page.html";
   }
@@ -44,8 +65,16 @@ function validar_vacio() {
 }
 
 function deshabilitar_foward() {
-    history.pushState(null, null, window.location.href);
-    window.addEventListener('popstate', function(event){
-        this.history.pushState(null, null, this.window.location.href);
-    });
+  history.pushState(null, null, window.location.href);
+  window.addEventListener("popstate", function (event) {
+    this.history.pushState(null, null, this.window.location.href);
+  });
+}
+
+
+function closePopup() {
+  popup.style.display = 'none';
+  overlay.style.display = 'none';
+  video.pause(); // Pausar el video
+  video.currentTime = 0; // Reiniciar el video
 }

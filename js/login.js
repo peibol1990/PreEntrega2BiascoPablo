@@ -52,7 +52,7 @@ function validar(user1, pass1) {
     overlay.addEventListener('click', closePopup);
     popup.addEventListener('click', closePopup);
   } else {
-    window.location.href = "pages/main_page.html";
+    window.location.href = "../pages/market.html";
   }
 }
 

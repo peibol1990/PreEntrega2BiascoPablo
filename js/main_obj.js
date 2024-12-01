@@ -4,6 +4,8 @@ let tot_precio = 0;
 const clave_articulos = "listaArticulos";
 
 
+
+
 class ArticuloInv {
   constructor(codigo, nombre, precio, tamanio, descripcion) {
     this._codigo = codigo;
@@ -54,11 +56,19 @@ let visor = document.getElementById("visor");
 document.getElementById("carga-form").addEventListener("submit", function (event) {
     event.preventDefault();
 
-    let codigo = document.getElementById("cod_art").value;
+    let codigo = document.getElementById("cod_art").value;    
     let nombre = document.getElementById("nombre_art").value.toUpperCase();
     let precio = parseInt(document.getElementById("precio_art").value);
     let tamanio = document.getElementById("lista_tamaño").value;
     let descripcion = document.getElementById("descripcion").value;
+
+    if(validarCarga(codigo)){
+      Swal.fire({
+        title: "Articulo Existente",
+        text: "El articulo ingresado ya existe",
+        icon: "warning"
+      });
+    }else{
 
     const articulo = new ArticuloInv(codigo,nombre,precio,tamanio,descripcion);
 
@@ -68,10 +78,33 @@ document.getElementById("carga-form").addEventListener("submit", function (event
 
     calc_espacios(articulo.tamanio);
     mostrar_valores(tot_art);
-
     tot_art++;    
-
+    limpiarCarga();
+    }
   });
+
+
+  function limpiarCarga() {
+  
+    const elementos = document.querySelectorAll('.c_inputs');
+
+    elementos.forEach(elemento => {       
+        if (elemento.tagName === 'INPUT') {            
+                
+                elemento.value = '';
+            
+        } else(elemento.tagName === 'SELECT') 
+            
+            elemento.selectedIndex = 0;
+        }
+    )};
+
+
+  function validarCarga(code){
+
+    return genArraydLocal().find((articulo) => articulo.codigo == code);   
+        
+  }
 
 
   
@@ -133,13 +166,26 @@ function validar_buscador() {
   console.log(palabra_clave);
 
   if (palabra_clave === "") {
-    alert("Ingrese lo que desea buscar");
+    Swal.fire({
+      title: "Advertencia",
+      text: "Ingrese lo que desea buscar",
+      icon: "warning"
+    });
+    
   }
   if (!ch_cod.checked & !ch_nom.checked) {
-    alert("Seleccione algún criterio de busqueda");
+    Swal.fire({
+      title: "Advertencia",
+      text: "Seleccione algun criterio de busqueda",
+      icon: "warning"
+    });
   }
   if (ch_cod.checked & ch_nom.checked) {
-    alert("Seleccione solo un criterio de busqueda");
+    Swal.fire({
+      title: "Advertencia",
+      text: "Seleccione solo UN criterio de busqueda",
+      icon: "warning"
+    });
     ch_cod.checked = false;
     ch_nom.checked = false;
   }
@@ -160,7 +206,11 @@ function validar_buscador() {
     if (res_bus) {
       cargar_datos(res_bus.codigo, res_bus.nombre, res_bus.precio, res_bus.tamanio, res_bus.descripcion);
     } else {
-      alert("Artículo no encontrado");
+      Swal.fire({
+        title: "Error",
+        text: "Articulo no encontrado",
+        icon: "error"
+      });
     }
   }
   
@@ -172,7 +222,11 @@ function validar_buscador() {
     if (res_bus) {
       cargar_datos(res_bus.codigo, res_bus.nombre, res_bus.precio, res_bus.tamanio, res_bus.descripcion);
     } else {
-      alert("Artículo no encontrado");
+      Swal.fire({
+        title: "Error",
+        text: "Articulo no encontrado",
+        icon: "error"
+      });
     }
   }
 
